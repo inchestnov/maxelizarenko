@@ -82,6 +82,11 @@ section[id] {
   background: var(--color-bg-alt);
 }
 
+.section--accent {
+  background-color: var(--color-bg-alt);
+  background-image: radial-gradient(ellipse at top, rgba(201, 162, 39, 0.1), transparent 60%);
+}
+
 .section-eyebrow {
   color: var(--color-gold);
   text-transform: uppercase;

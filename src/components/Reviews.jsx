@@ -25,7 +25,7 @@ export default function Reviews() {
   const [ref, isVisible] = useScrollReveal();
 
   return (
-    <section className="section section--alt" id="reviews">
+    <section className="section" id="reviews">
       <div className="container">
         <span className="section-eyebrow">Отзывы</span>
         <h2 className="section-title">Что говорят клиенты</h2>

@@ -17,7 +17,7 @@ function App() {
         <Contacts />
       </main>
       <footer className="footer">
-        <p>© {new Date().getFullYear()} Barbershop Макс Елизаренко. Все права защищены.</p>
+        <p>© {new Date().getFullYear()} Макс Елизаренко</p>
       </footer>
     </>
   );

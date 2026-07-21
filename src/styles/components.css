@@ -277,6 +277,13 @@ body.no-scroll {
   white-space: nowrap;
 }
 
+.services__note {
+  margin-top: 28px;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
 /* =========================================================
    Reviews
    ========================================================= */
@@ -287,6 +294,9 @@ body.no-scroll {
 }
 
 .review-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -309,6 +319,7 @@ body.no-scroll {
   color: var(--color-text-muted);
   font-size: 14px;
   margin-bottom: 18px;
+  flex: 1;
 }
 
 .review-card__name {
@@ -360,6 +371,11 @@ body.no-scroll {
   text-align: center;
 }
 
+.contacts__row .contact-link {
+  justify-content: center;
+  text-align: center;
+}
+
 .contact-link__icon {
   display: flex;
   color: var(--color-gold);
@@ -379,24 +395,34 @@ body.no-scroll {
 }
 
 /* =========================================================
-   Booking form
+   Booking
    ========================================================= */
-.booking__inner {
+.booking__options {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  align-items: center;
+  gap: 40px;
 }
 
-.form {
+.booking__option {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 28px;
+  align-items: center;
+  gap: 16px;
 }
 
+.booking__question {
+  font-size: clamp(20px, 4vw, 26px);
+}
+
+.booking__option-text {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  text-align: center;
+  max-width: 32ch;
+}
+
+/* Form fields shared by the callback modal */
 .form__row {
   display: flex;
   flex-direction: column;
@@ -432,21 +458,66 @@ body.no-scroll {
   outline-offset: 1px;
 }
 
-.form__submit {
-  width: 100%;
-  margin-top: 4px;
+.form__success {
+  color: var(--color-gold-light);
+  font-size: 15px;
+  text-align: center;
 }
 
-.form__success {
+/* Callback modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 400;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90vw, 420px);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  z-index: 410;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: var(--touch-target);
+  height: var(--touch-target);
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
-  border-radius: 10px;
-  background: rgba(201, 162, 39, 0.12);
-  border: 1px solid var(--color-gold);
-  color: var(--color-gold-light);
-  font-size: 14px;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  color: var(--color-gold);
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal__submit {
+  width: 100%;
+  margin-top: 4px;
 }
 
 /* =========================================================
@@ -458,26 +529,6 @@ body.no-scroll {
   color: var(--color-text-muted);
   font-size: 13px;
   border-top: 1px solid var(--color-border);
-}
-
-/* =========================================================
-   Floating WhatsApp button
-   ========================================================= */
-.fab {
-  position: fixed;
-  right: 16px;
-  bottom: calc(16px + env(safe-area-inset-bottom));
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #25d366;
-  color: #0a0a0a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-  z-index: 90;
 }
 
 /* =========================================================
@@ -549,29 +600,20 @@ body.no-scroll {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .booking__inner {
+  .booking__options {
     flex-direction: row;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: stretch;
+    gap: 100px;
   }
 
-  .booking__info {
-    flex: 1;
-    position: sticky;
-    top: 120px;
-  }
-
-  .form {
-    flex: 1;
-    max-width: 480px;
+  .booking__option .btn {
+    margin-top: auto;
   }
 
   .contacts__list {
     max-width: 640px;
     margin: 0 auto;
-  }
-
-  .fab {
-    display: none;
   }
 }
 

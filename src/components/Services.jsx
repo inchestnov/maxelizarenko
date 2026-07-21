@@ -20,7 +20,7 @@ export default function Services() {
   const [ref, isVisible] = useScrollReveal();
 
   return (
-    <section className="section" id="services">
+    <section className="section section--alt" id="services">
       <div className="container">
         <span className="section-eyebrow">Прайс-лист</span>
         <h2 className="section-title">Услуги и цены</h2>
@@ -37,6 +37,10 @@ export default function Services() {
             </div>
           ))}
         </div>
+
+        <p className="services__note">
+          <span aria-hidden="true">🐕</span> Можно с собаками — заходите вместе с четвероногим другом.
+        </p>
       </div>
     </section>
   );
